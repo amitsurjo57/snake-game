@@ -1,8 +1,5 @@
-// ignore_for_file: constant_identifier_names
-
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
 
@@ -68,7 +65,7 @@ class _MainScreenState extends State<MainScreen> {
     return GestureDetector(
       onHorizontalDragUpdate: (details) {
         setState(
-          () {
+              () {
             if (details.delta.dx > 0 && snakePosition != SnakePosition.LEFT) {
               // Right
               snakePosition = SnakePosition.RIGHT;
@@ -82,7 +79,7 @@ class _MainScreenState extends State<MainScreen> {
       },
       onVerticalDragUpdate: (details) {
         setState(
-          () {
+              () {
             if (details.delta.dy > 0 && snakePosition != SnakePosition.UP) {
               // Down
               snakePosition = SnakePosition.DOWN;
@@ -119,7 +116,9 @@ class _MainScreenState extends State<MainScreen> {
               );
             } else {
               return snakeBlock(
-                color: Theme.of(context).primaryColor,
+                color: Theme
+                    .of(context)
+                    .primaryColor,
                 index: index,
               );
             }
@@ -232,9 +231,9 @@ class _MainScreenState extends State<MainScreen> {
     Vibration.vibrate(amplitude: 50, duration: 100);
     Timer.periodic(
       const Duration(milliseconds: 200),
-      (timer) {
+          (timer) {
         setState(
-          () {
+              () {
             isActiveButton = false;
             if (isSnakeItSelf()) {
               Vibration.vibrate(
@@ -244,20 +243,23 @@ class _MainScreenState extends State<MainScreen> {
               timer.cancel();
               showDialog(
                 context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text("Game Over!!"),
-                  titleTextStyle: const TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.redAccent,
-                ),
-                  content: Text("Score: $score"),
-                  contentTextStyle: const TextStyle(
-                  fontSize: 28,
-                  color: Colors.limeAccent,
-                ),
-                  backgroundColor: Theme.of(context).primaryColor,
-                ),
+                builder: (context) =>
+                    AlertDialog(
+                      title: const Text("Game Over!!"),
+                      titleTextStyle: const TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.redAccent,
+                      ),
+                      content: Text("Score: $score"),
+                      contentTextStyle: const TextStyle(
+                        fontSize: 28,
+                        color: Colors.limeAccent,
+                      ),
+                      backgroundColor: Theme
+                          .of(context)
+                          .primaryColor,
+                    ),
               );
             } else {
               moveSnake();
